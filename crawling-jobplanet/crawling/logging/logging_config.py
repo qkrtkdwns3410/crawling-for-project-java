@@ -10,3 +10,7 @@ def setup_logging():
                             logging.FileHandler("app.log"),  # 로그를 파일에 기록
                             logging.StreamHandler()  # 로그를 콘솔에도 출력
                         ])
+
+
+def logging_config():
+    return None

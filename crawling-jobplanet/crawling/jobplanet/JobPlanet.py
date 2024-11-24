@@ -9,10 +9,7 @@ from selenium.webdriver.support import expected_conditions as ec
 from selenium.webdriver.support.wait import WebDriverWait
 from webdriver_manager.chrome import ChromeDriverManager
 
-import crawling.logging.logging_config as logging_config
-
 # 로깅 설정
-logging_config.setup_logging()
 logger = logging.getLogger(__name__)
 
 # .env 파일 로드
