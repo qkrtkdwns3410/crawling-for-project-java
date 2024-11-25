@@ -12,6 +12,8 @@ from selenium.webdriver.support import expected_conditions as ec
 from selenium.webdriver.support.wait import WebDriverWait
 from webdriver_manager.chrome import ChromeDriverManager
 
+from crawling.jobplanet.company_info import CompanyInfo
+
 # 로깅 설정
 logger = logging.getLogger(__name__)
 
@@ -142,13 +144,7 @@ try:
 
                 # 데이터 저장
                 # JSON 파일에 저장
-                company_data = {
-                    "company_name": company_name,
-                    "rating": rating_element.text,
-                    "rating_count": rating_count,
-                    "link": converted_url
-                }
-                save_to_json(company_data)
+                save_to_json(CompanyInfo.from_data(company_name, rating_element.text, rating_count, converted_url))
 
                 print(f"Rating: {rating_element.text}")
                 print(f"Rating Count: {rating_count}")

@@ -1,7 +1,13 @@
 class CompanyInfo:
-    def __init__(self, company_name, rating):
+    def __init__(self, company_name, rating, rating_count, link):
         self.company_name = company_name
         self.rating = rating
+        self.rating_count = rating_count
+        self.link = link
 
     def __str__(self):
-        return f"company_name: {self.company_name}, rating: {self.rating}"
+        return f"Company Name: {self.company_name}, Rating: {self.rating}, Rating Count: {self.rating_count}, Link: {self.link}"
+
+    @staticmethod
+    def from_data(company_name, rating, rating_count, link):
+        return CompanyInfo(company_name, rating, rating_count, link)
