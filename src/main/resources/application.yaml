@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: crawling-for-project-java
+
+  jpa:
+    properties:
+      hibernate:
+        jdbc:
+          batch_size: 100
