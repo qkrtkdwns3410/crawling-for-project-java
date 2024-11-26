@@ -1,5 +1,9 @@
 package com.crawling.crawlingforprojectjava.crawling_data;
 
+import com.crawling.crawlingforprojectjava.jobplanet.domain.JobPlanetCompanyInfo;
+
+import java.util.List;
+
 /**
  * packageName    : com.crawling.crawlingforprojectjava.crawling_data
  * fileName       : strategy
@@ -11,6 +15,6 @@ package com.crawling.crawlingforprojectjava.crawling_data;
  * -----------------------------------------------------------
  * 24. 11. 26.        sjunpark       최초 생성
  */
-interface CrawlingStrategy {
-    void saveCrawlingData();
+public interface CrawlingStrategy {
+    void saveCrawlingData(List<JobPlanetCompanyInfo> datas);
 }
