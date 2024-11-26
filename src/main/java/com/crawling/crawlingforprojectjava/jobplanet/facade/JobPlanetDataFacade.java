@@ -1,7 +1,7 @@
 package com.crawling.crawlingforprojectjava.jobplanet.facade;
 
 import com.crawling.crawlingforprojectjava.common.FileDataStore;
-import com.crawling.crawlingforprojectjava.crawling_data.CrawlingStrategy;
+import com.crawling.crawlingforprojectjava.crawling_data_strategy.CrawlingStrategy;
 import com.crawling.crawlingforprojectjava.jobplanet.domain.JobPlanetCompanyInfo;
 import com.crawling.crawlingforprojectjava.util.json.JsonFileReader;
 import lombok.RequiredArgsConstructor;

@@ -1,4 +1,4 @@
-package com.crawling.crawlingforprojectjava.crawling_data;
+package com.crawling.crawlingforprojectjava.crawling_data_strategy;
 
 import com.crawling.crawlingforprojectjava.jobplanet.domain.JobPlanetCompanyInfo;
 
