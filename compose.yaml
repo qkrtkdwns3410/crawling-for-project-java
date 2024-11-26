@@ -2,7 +2,7 @@ services:
   postgres:
     image: 'postgres:12.22'
     environment:
-      - 'POSTGRES_DB=mydatabase'
+      - 'POSTGRES_DB=crawling-for-project-java'
       - 'POSTGRES_PASSWORD=secret'
       - 'POSTGRES_USER=myuser'
     ports:
