@@ -4,15 +4,7 @@ import com.crawling.crawlingforprojectjava.jobplanet.domain.JobPlanetCompanyInfo
 import lombok.Getter;
 
 /**
- * packageName    : com.crawling.crawlingforprojectjava.common
- * fileName       : FileDataStore
- * author         : ipeac
- * date           : 24. 11. 26.
- * description    :
- * ===========================================================
- * DATE              AUTHOR             NOTE
- * -----------------------------------------------------------
- * 24. 11. 26.        ipeac       최초 생성
+ * 크롤링 데이터 위치와, 변환 타입을 관리하는 Enum
  */
 @Getter
 public enum FileDataStore {

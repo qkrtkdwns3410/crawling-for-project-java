@@ -1,6 +1,6 @@
 package com.crawling.crawlingforprojectjava.jobplanet.service;
 
-import com.crawling.crawlingforprojectjava.crawling_data.CrawlingStrategy;
+import com.crawling.crawlingforprojectjava.crawling_data_strategy.CrawlingStrategy;
 import com.crawling.crawlingforprojectjava.jobplanet.domain.JobPlanetCompanyInfo;
 import com.crawling.crawlingforprojectjava.jobplanet.repository.JobPlanetCompanyInfoRepository;
 import lombok.RequiredArgsConstructor;
