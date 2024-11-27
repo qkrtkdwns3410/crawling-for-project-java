@@ -11,3 +11,11 @@ class CompanyInfo:
     @staticmethod
     def from_data(company_name, rating, rating_count, link):
         return CompanyInfo(company_name, rating, rating_count, link)
+
+    def to_dict(self):
+        return {
+            "company_name": self.company_name,
+            "rating": self.rating,
+            "rating_count": self.rating_count,
+            "link": self.link
+        }

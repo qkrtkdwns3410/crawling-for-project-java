@@ -33,12 +33,12 @@ options.add_argument('--ignore-ssl-errors=yes')
 options.add_argument('--ignore-certificate-errors')
 options.add_argument('--disable-dev-shm-usage')
 options.add_argument('--disable-extensions')
-options.add_argument('--window-size= 640 x 480')
+options.add_argument('--window-size=640,480')
 options.add_argument('--no-sandbox')
 options.add_argument('--log-level=3')
 options.add_argument('--disable-gpu')
 options.add_argument('--incognito')
-options.add_argument('--disable-images')
+# options.add_argument('--disable-images')
 options.add_experimental_option("prefs", {'profile.managed_default_content_settings.images': 2})
 options.add_argument('--blink-settings=imagesEnabled=false')
 
@@ -50,23 +50,6 @@ chrome_driver_path = os.path.join(os.path.dirname(driver_path), "chromedriver.ex
 
 # WebDriver 초기화 시 service 매개변수 사용
 driver = webdriver.Chrome(service=Service(executable_path=chrome_driver_path), options=options)
-
-# 잡플래닛 로그인 페이지 이동
-# driver.get("https://www.jobplanet.co.kr/users/sign_in?_nav=gb")
-
-# # 이메일 입력 <input data-valid="false" id="user_email" name="user[email]" placeholder="이메일 주소" type="email" value="qkrtkdwns3410@naver.com">
-# email_input = driver.find_element(By.ID, "user_email")
-#
-# # 비밀번호 입력
-# password_input = driver.find_element(By.ID, "user_password")
-#
-# # 로그인 버튼 클릭 <button class="btn_sign_up" type="submit">이메일로 로그인</button>
-# login_button = driver.find_element(By.CLASS_NAME, "btn_sign_up")
-#
-# # 로그인 버튼 클릭
-# email_input.send_keys(EMAIL)
-# password_input.send_keys(PASSWORD)
-# login_button.click()
 
 def convert_url_to_decoded_url(current_url):
     decoded_url = unquote(current_url)
@@ -134,7 +117,9 @@ try:
                 ## 별점 개수
                 rating_count_element = WebDriverWait(driver, 5).until(
                     ec.presence_of_element_located(
-                        (By.XPATH, f"/html/body/div[1]/div[2]/div/div[1]/div[1]/article/div/div[1]/section[{section_index}]/div/div/dl[2]/dt"))
+                        (By.XPATH,
+                         f"/html/body/div[1]/div[2]/div/div[1]/div[1]/article/div/div[1]/section[{section_index}]/div/div/dl[2]/dt" )),
+                    "개의"
                 )
 
                 rating_count = rating_count_element.text.split("개의")[0]
@@ -144,7 +129,8 @@ try:
 
                 # 데이터 저장
                 # JSON 파일에 저장
-                save_to_json(CompanyInfo.from_data(company_name, rating_element.text, rating_count, converted_url))
+                save_to_json(
+                    CompanyInfo.from_data(company_name, rating_element.text, rating_count, converted_url).to_dict())
 
                 print(f"Rating: {rating_element.text}")
                 print(f"Rating Count: {rating_count}")
