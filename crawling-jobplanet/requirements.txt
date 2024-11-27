@@ -5,3 +5,4 @@ lxml
 python-dotenv
 webdriver-manager
 psycopg2-binary
+rapidfuzz

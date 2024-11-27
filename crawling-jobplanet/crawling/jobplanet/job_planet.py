@@ -1,4 +1,3 @@
-import json
 import logging
 import os
 from urllib.parse import unquote
@@ -12,6 +11,7 @@ from selenium.webdriver.support import expected_conditions as ec
 from selenium.webdriver.support.wait import WebDriverWait
 from webdriver_manager.chrome import ChromeDriverManager
 
+from crawling.file_util import file_util
 from crawling.jobplanet.company_info import CompanyInfo
 
 # 로깅 설정
@@ -60,23 +60,6 @@ def parse_company_name(url):
     _c_url = url.split('/')[-1]
     _c_url = _c_url.split('?')[0]
     return _c_url
-
-def save_to_json(data, filename='company_data.json'):
-    # 파일이 비어 있는지 확인
-    if os.path.exists(filename) and os.path.getsize(filename) > 0:
-        with open(filename, 'r+', encoding='utf-8') as f:
-            f.seek(0, os.SEEK_END)
-            f.seek(f.tell() - 1, os.SEEK_SET)
-            f.truncate()
-            f.write(',')
-            json.dump(data, f, ensure_ascii=False, separators=(',', ':'))
-            f.write(']')
-    else:
-        with open(filename, 'w', encoding='utf-8') as f:
-            f.write('[')
-            json.dump(data, f, ensure_ascii=False, separators=(',', ':'))
-            f.write(']')
-
 
 def remove_company_info_if_exist():
     if os.path.exists('company_data.json'):
@@ -129,7 +112,7 @@ try:
 
                 # 데이터 저장
                 # JSON 파일에 저장
-                save_to_json(
+                file_util.save_to_json(
                     CompanyInfo.from_data(company_name, rating_element.text, rating_count, converted_url).to_dict())
 
                 print(f"Rating: {rating_element.text}")
