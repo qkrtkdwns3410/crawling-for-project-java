@@ -10,10 +10,12 @@ jobplanet_file_location = '../jobplanet/company_data.json'
 jobplanet_json = file_util.read_json_file(jobplanet_file_location)
 
 list1 = ["삼성전자", "LG화학", "SK하이닉스", "네이버"]
-list2 = ["삼성", "엘지화학", "SK Hynix", "Naver Corporation", "SK", "Google Korea"]
+list2 = ["(주)삼성전자", "엘지화학", "SK Hynix", "Naver Corporation", "SK", "Google Korea"]
 
 results = []
 for name1 in list1:
+    print(f"Processing {name1}...")
+
     # 사전 필터링 (길이 차이 제한)
     filtered_list2 = [name for name in list2 if abs(len(name1) - len(name)) <= 5]
 
