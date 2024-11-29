@@ -9,6 +9,8 @@ def filter_candidates(name, candidates, threshold=50):
 jobplanet_file_location = '../jobplanet/company_data.json'
 jobplanet_json = file_util.read_json_file(jobplanet_file_location)
 
+print(f"jobplanet_json: {jobplanet_json}")
+
 list1 = ["삼성전자", "LG화학", "SK하이닉스", "네이버"]
 list2 = ["(주)삼성전자", "엘지화학", "SK Hynix", "Naver Corporation", "SK", "Google Korea"]
 
