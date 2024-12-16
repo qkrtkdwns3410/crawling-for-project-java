@@ -4,9 +4,13 @@ import com.crawling.crawlingforprojectjava.crawling_data_strategy.CrawlingStrate
 import com.crawling.crawlingforprojectjava.jobplanet.domain.JobPlanetCompanyInfo;
 import com.crawling.crawlingforprojectjava.jobplanet.repository.JobPlanetCompanyInfoRepository;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.io.IOException;
 import java.util.List;
 
 /**
@@ -22,6 +26,7 @@ import java.util.List;
  */
 @Service
 @Transactional
+@Slf4j
 @RequiredArgsConstructor
 public class JobPlanetCrawlingDataStrategy implements CrawlingStrategy {
     private final JobPlanetCompanyInfoRepository jobPlanetCompanyInfoRepository;
@@ -37,6 +42,16 @@ public class JobPlanetCrawlingDataStrategy implements CrawlingStrategy {
             
             jobPlanetCompanyInfoRepository.saveAll(datas.subList(i, endIdx));
             jobPlanetCompanyInfoRepository.flush();
+        }
+    }
+    
+    //데이터 크롤링 jsoup 로 수행하기
+    public void a1() {
+        // 웹 페이지 가져오기
+        try {
+            Document doc = Jsoup.connect("https://example.com").get();
+        } catch (IOException e) {
+            log.error("{}", e.getMessage());
         }
     }
 }

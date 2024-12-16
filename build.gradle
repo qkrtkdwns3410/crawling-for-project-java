@@ -32,6 +32,9 @@ dependencies {
 
     compileOnly 'org.projectlombok:lombok'
 
+    //crawling lib
+    implementation 'org.jsoup:jsoup:1.18.1'
+
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
     developmentOnly 'org.springframework.boot:spring-boot-docker-compose'
 
