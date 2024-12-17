@@ -44,11 +44,13 @@ public class JobPlanetCompanyInfo {
     @Column(nullable = false, length = 4000)
     private String link;
     
-    public static JobPlanetCompanyInfo of(String companyName, double rating, int ratingCount, String link) {
+    public static JobPlanetCompanyInfo of(String companyName, String rating, String ratingCount, String link) {
+        String numStr = ratingCount.replaceAll(",", "").replaceAll("[^0-9]", "");
+        
         return JobPlanetCompanyInfo.builder()
                 .companyName(companyName)
-                .rating(rating)
-                .ratingCount(ratingCount)
+                .rating(Double.parseDouble(rating))
+                .ratingCount(Integer.parseInt(numStr))
                 .link(link)
                 .build();
     }

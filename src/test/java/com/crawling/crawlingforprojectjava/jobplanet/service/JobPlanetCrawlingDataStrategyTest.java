@@ -78,4 +78,15 @@ class JobPlanetCrawlingDataStrategyTest {
         final List<JobPlanetCompanyInfo> actual = jobPlanetCompanyInfoRepository.findAll();
         Assertions.assertThat(actual).hasSize(1500);
     }
+    
+    @Test
+    @DisplayName("Jsoup 데이터 크롤링 테스트")
+    void When_A1_Expect_Success() {
+        // given
+        // when
+        jobPlanetCrawlingDataStrategy.a1();
+        
+        // then
+        jobPlanetCompanyInfoRepository.findAll().forEach(System.out::println);
+    }
 }
